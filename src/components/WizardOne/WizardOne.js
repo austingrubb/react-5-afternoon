@@ -1,5 +1,7 @@
 import React,  { Component } from 'react';
 import {Link} from 'react-router-dom'
+import {updateLoanType, updatePropertyType} from '../../ducks/reducer';
+import {connect} from 'react-redux';
 
 class WizardOne extends Component {
     render(){
@@ -34,4 +36,13 @@ class WizardOne extends Component {
         )
     }
 }
-export default WizardOne; 
+
+function mapStateToProps(state){
+    const {loanType,propertyType} = state;
+
+    return{
+        loanType,
+        propertyType
+    };
+}
+export default connect (mapStateToProps,{updateLoanType,updatePropertyType})(WizardOne);
